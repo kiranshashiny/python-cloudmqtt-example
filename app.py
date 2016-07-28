@@ -32,13 +32,11 @@ client.on_subscribe = on_subscribe
 # Uncomment to enable debug messages
 client.on_log = on_log
 
-print "hello world"
 
 # user name has to be called before connect - my notes.
-client.username_pw_set("ghcqvpeu", "geZgGJ8tsPVk")
-print "before connecting"
+client.username_pw_set("oxefqvkn", "aKpQPSFiTpXp")
 
-client.connect('m12.cloudmqtt.com', 12071, 60)
+client.connect('m12.cloudmqtt.com', 19757, 60)
 
 # Continue the network loop, exit when an error occurs
 #rc = 0
@@ -51,10 +49,10 @@ client.connect('m12.cloudmqtt.com', 12071, 60)
 # Other loop*() functions are available that give a threaded interface and a
 # manual interface.
 #client.loop_forever()
+
 client.loop_start()
 client.subscribe ("/frommothership" ,0 )
 
-print "am I here "
 
 run = True
 while run:
