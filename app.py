@@ -56,5 +56,9 @@ client.subscribe ("/frommothership" ,0 )
 
 run = True
 while run:
-    client.publish ( "/toclientloud", "from python code")
-    time.sleep(1)
+    #client.publish ( "/toclientloud", "from python code")
+
+    client.publish ( "/frommothership", "on")
+    time.sleep(2)
+    client.publish ( "/frommothership", "off")
+
