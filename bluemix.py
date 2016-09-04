@@ -34,9 +34,9 @@ client.on_log = on_log
 
 
 # user name has to be called before connect - my notes.
-client.username_pw_set("oxefqvkn", "aKpQPSFiTpXp")
+client.username_pw_set("token", "aKpQPSFiTpXp")
 
-client.connect('m12.cloudmqtt.com', 19757, 60)
+client.connect('8ubmht.messaging.internetofthings.ibmcloud.com', 1883, 60)
 
 # Continue the network loop, exit when an error occurs
 #rc = 0
