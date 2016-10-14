@@ -3,23 +3,19 @@
 #include <Ethernet.h>
 
 /*
- * Publish Subscribe demo
+ * Publish Subscribe of data.
  *
- * A simple platform demo for Arduino.
- * This was modified to suit cloudmqtt.com broker instead of one above.
- */
+*/
 
 char server[] = "m12.cloudmqtt.com";
 
 // MAC Address of Arduino Ethernet Sheild (on sticker on shield)
-// This can be anything arbitrary if no Ethernet shield is there.
-
 byte MAC_ADDRESS[] = { 0x90, 0xA2, 0xDA, 0x0D, 0x31, 0xB8 };
 
 EthernetClient ethClient;
 
-// Pin 9 is the LED output pin
-int ledPin = 9;
+// Pin 13 is the LED output pin
+int ledPin = 13;
 // Analog 0 is the input pin
 int lightPinIn = 0;
 
@@ -27,6 +23,7 @@ int lightPinIn = 0;
 #define MODE_OFF    0  // not sensing light, LED off
 #define MODE_ON     1  // not sensing light, LED on
 #define MODE_SENSE  2  // sensing light, LED controlled by software
+
 int senseMode = 0;
 unsigned long time;
 
@@ -48,13 +45,15 @@ void callback(char* topic, byte* payload, unsigned int length) {
   
   String msgString = String(message_buff);
   
-  //Serial.println("Payload: " + msgString);
+  Serial.println("Payload: " + msgString);
   
-  if (msgString.equals("{\"command\":{\"lightmode\": \"OFF\"}}")) {
+  if (msgString.equals("OFF")) {
+    Serial.println ( "Light Mode OFF");
     senseMode = MODE_OFF;
-  } else if (msgString.equals("{\"command\":{\"lightmode\": \"ON\"}}")) {
+  } else if (msgString.equals("ON")) {
+    Serial.println ( "Light Mode ON");
     senseMode = MODE_ON;
-  } else if (msgString.equals("{\"command\":{\"lightmode\": \"SENSE\"}}")) {
+  } else if (msgString.equals("SENSE")) {
     senseMode = MODE_SENSE;
   }
 }
@@ -83,16 +82,18 @@ void loop()
       // clientID, username, MD5 encoded password
       client.connect("arduino-mqtt", "oxefqvkn", "aKpQPSFiTpXp");
       client.publish("published_from_laptop", "I'm alive!");
-      client.subscribe("/frommothership");
+      client.subscribe("/lightmode");
   }
   
   switch (senseMode) {
     case MODE_OFF:
       // light should be off
       digitalWrite(ledPin, LOW);
+      //Serial.println ("Turning off LED");
       break;
     case MODE_ON:
       // light should be on
+      //Serial.println ("Turning on LED");
       digitalWrite(ledPin, HIGH);
       break;
     case MODE_SENSE:
