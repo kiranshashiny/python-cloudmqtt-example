@@ -61,15 +61,15 @@ client.connect('m12.cloudmqtt.com', 19757, 60)
 #client.loop_forever()
 
 client.loop_start()
-client.subscribe ("/frommothership" ,0 )
 
+client.subscribe ("/frommothership" ,0 )
 
 run = True
 while run:
     #client.publish ( "/toclientloud", "from python code")
 
-    client.publish ( "/frommothership", "on")
+    client.publish  ( "/lightmode", "ON" )
     time.sleep(2)
-    client.publish ( "/frommothership", "off")
+    client.publish ( "/lightmode", "OFF")
     time.sleep(2)
 
