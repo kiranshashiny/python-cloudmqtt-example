@@ -3,15 +3,17 @@
 #include <Ethernet.h>
 
 /*
- * LightSensorMqttDemo
+ * Publish Subscribe demo
  *
- * A simple m2m.io platform demo for Arduino.
+ * A simple platform demo for Arduino.
+ * This was modified to suit cloudmqtt.com broker instead of one above.
  */
 
-#define MQTT_SERVER "q.m2m.io"
 char server[] = "m12.cloudmqtt.com";
 
 // MAC Address of Arduino Ethernet Sheild (on sticker on shield)
+// This can be anything arbitrary if no Ethernet shield is there.
+
 byte MAC_ADDRESS[] = { 0x90, 0xA2, 0xDA, 0x0D, 0x31, 0xB8 };
 
 EthernetClient ethClient;
