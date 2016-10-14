@@ -1,5 +1,11 @@
 This sample app shows how to connect with [mosquitto](https://pypi.python.org/pypi/mosquitto/) to [CloudMQTT](http://www.cloudmqtt.com) and both publish and subscribe messages. 
 
+
+Here this is a combination of Arduino Uno, sketch on one end and a client at the other end running on the laptop where the user can turn on and off a simple LED by publishing the commands.
+
+This is an end to end solution -where the pub sub goes to the broker from Arduino board or the laptop and comes back to the laptop or the smartphone at the other end.
+
+
     $ pip install -r requirements.txt
 
 I got the definitions from this page.
@@ -15,6 +21,8 @@ https://api.cloudmqtt.com/sso/cloudmqtt/websocket
 3. Start the app.py so publish data.
 4. Wait for it to appear on the Cloudmqtt websockets console.
 5. See that it appears on the Arduino IDE Serial monitor as well.
+
+<img width="1045" src="https://cloud.githubusercontent.com/assets/14288989/19376490/e739d426-91fb-11e6-9692-c792c4f342c4.png">
 
 <img width="711"  src="https://cloud.githubusercontent.com/assets/14288989/19376311/64c745ce-91fa-11e6-8450-c0d44bcba9d9.png">
 
