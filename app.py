@@ -1,3 +1,13 @@
+# This publishes messages to cloudmqtt.com and also subscribes to it.
+# Publishes an On/OFF messages to the Cloudmqtt
+# At the other end - we have the Arduino sketch which is listening to this message
+# and turns on and off the LEDs.
+
+# Good example of a full end to end solution, 
+# this code has to be run on a laptop, You will need a cloudmqtt account.
+# at the other end you will have the Arduino sketch listening to messages and will print
+# on the serial monitor
+
 import paho.mqtt.client as mqtt , os, urlparse
 import time
 
